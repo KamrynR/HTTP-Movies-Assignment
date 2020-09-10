@@ -13,11 +13,8 @@ const App = () => {
   const getMovieList = () => {
     axios
       .get("http://localhost:3333/api/movies")
-      .then(res => {
-        setMovieList(res.data);
-        console.log(res);
-      })
-      .catch(err => console.log(err.response));
+      .then(res => setMovieList(res.data))
+      .catch(err => console.log(err));
   };
 
   const addToSavedList = movie => {

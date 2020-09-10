@@ -15,20 +15,16 @@ export const MovieUpdate = props => {
     useEffect(() => {
         axios
             .get(`http://localhost:3333/api/movies/${thisURL}`)
-            .then(res => {
-                console.log(res);
-                setUpdateMovie(res.data);
-            })
+            .then(res => setUpdateMovie(res.data))
             .catch(err => console.log(err));
       }, []);
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:3333/api/movies/${updateMovie.id}`, updateMovie)
-        .then(res => {
-            setUpdateMovie(res.data);
-        })
-        .catch(err => console.log(err));
+        axios
+            .put(`http://localhost:3333/api/movies/${updateMovie.id}`, updateMovie)
+            .then(res => setUpdateMovie(res.data))
+            .catch(err => console.log(err));
     };
 
     const handleChange = e => {
@@ -37,10 +33,11 @@ export const MovieUpdate = props => {
     };
 
     return (
-        <>
+        <div className='update-movie'>
             <h3>Update Movie</h3>
             <form onSubmit={handleSubmit}>
                 <label for='title'>Movie Title</label>
+                <br/>
                 <input
                 name="title"
                 type="text"
@@ -49,6 +46,7 @@ export const MovieUpdate = props => {
                 />
                 <br/>
                 <label for='director'>Director</label>
+                <br/>
                 <input
                 name="director"
                 type="text"
@@ -57,14 +55,16 @@ export const MovieUpdate = props => {
                 />
                 <br/>
                 <label for='metascore'>Metascore</label>
+                <br/>
                 <input
                 name="metascore"
                 type="text"
                 value={updateMovie.metascore}
                 onChange={handleChange}
                 />
+                <br/>
                 <button type='submit'>Submit</button>
             </form>
-        </>
+        </div>
     )
 };

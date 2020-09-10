@@ -11,10 +11,8 @@ function Movie({ addToSavedList }) {
   const fetchMovie = (id) => {
     axios
       .get(`http://localhost:3333/api/movies/${id}`)
-      .then((res) => {
-        setMovie(res.data);
-      })
-      .catch((err) => console.log(err.response));
+      .then(res => setMovie(res.data))
+      .catch((err) => console.log(err));
   };
 
   const saveMovie = () => {
