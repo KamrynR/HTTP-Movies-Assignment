@@ -71,6 +71,12 @@ body {
   background-color: lightskyblue;
 }
 
+.edit-button {
+  padding: 5px 10px;
+  width: 100px;
+  background-color: lightskyblue;
+}
+
 .movie-warning {
   color: red;
   text-align: center;
